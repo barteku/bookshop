@@ -1,0 +1,35 @@
+
+
+
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.24;bit=64;os=Darwin_13.1.0;machine=x86_64;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpEV3Z4Q0NiRW0xdjNHZlB0TXpaMEpUclhWS0U3QUUzVE5wbm43eUwzQkJkRElqRjJQMmcxN3p5SG5MOkVFSGN6QkFqZDNNd0FCNWROUG9nZzdaYmk3QzJVdFhsOUVlU0VCUGk0ckV3V0NpSXhRcXByb2VH
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Got 401 response from server. Retrying
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.24;bit=64;os=Darwin_13.1.0;machine=x86_64;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QVpEV3Z4Q0NiRW0xdjNHZlB0TXpaMEpUclhWS0U3QUUzVE5wbm43eUwzQkJkRElqRjJQMmcxN3p5SG5MOkVFSGN6QkFqZDNNd0FCNWROUG9nZzdaYmk3QzJVdFhsOUVlU0VCUGk0ckV3V0NpSXhRcXByb2VH
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Got 401 response from server. Retrying
+PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PPHttpConnection: Payload grant_type=client_credentials
+PPHttpConnection: Adding header Authorization: Basic QVpEV3Z4Q0NiRW0xdjNHZlB0TXpaMEpUclhWS0U3QUUzVE5wbm43eUwzQkJkRElqRjJQMmcxN3p5SG5MOkVFSGN6QkFqZDNNd0FCNWROUG9nZzdaYmk3QzJVdFhsOUVlU0VCUGk0ckV3V0NpSXhRcXByb2VH
+PPHttpConnection: Adding header Accept: */*
+PPHttpConnection: Got 401 response from server. Retrying
+PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PPHttpConnection: Payload grant_type=client_credentials
+PPHttpConnection: Adding header Authorization: Basic QVpEV3Z4Q0NiRW0xdjNHZlB0TXpaMEpUclhWS0U3QUUzVE5wbm43eUwzQkJkRElqRjJQMmcxN3p5SG5MOkVFSGN6QkFqZDNNd0FCNWROUG9nZzdaYmk3QzJVdFhsOUVlU0VCUGk0ckV3V0NpSXhRcXByb2VH
+PPHttpConnection: Adding header Accept: */*
+PPHttpConnection: Got 401 response from server. Retrying
+PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PPHttpConnection: Payload grant_type=client_credentials
+PPHttpConnection: Adding header Authorization: Basic QVpEV3Z4Q0NiRW0xdjNHZlB0TXpaMEpUclhWS0U3QUUzVE5wbm43eUwzQkJkRElqRjJQMmcxN3p5SG5MOkVFSGN6QkFqZDNNd0FCNWROUG9nZzdaYmk3QzJVdFhsOUVlU0VCUGk0ckV3V0NpSXhRcXByb2VH
+PPHttpConnection: Adding header Accept: */*
+PPHttpConnection: Got 401 response from server. Retrying
+PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PPHttpConnection: Payload grant_type=client_credentials
+PPHttpConnection: Adding header Authorization: Basic dS5yYmFuc2tpLmJhcnRla19hcGkxLmdtYWlsLmNvbTpBWUwtQmZyNHBHejdTbHNqLkRtQy11YW1rRWF4QWNZSHVDQVF6ZjF2dk5MTE44akxlbkhZWm9wWQ==
+PPHttpConnection: Adding header Accept: */*
+PPHttpConnection: Got 401 response from server. Retrying
