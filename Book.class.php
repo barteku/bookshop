@@ -132,7 +132,7 @@ class Book {
         
         if($content['error'] === UPLOAD_ERR_OK){
             if($content["type"] == "application/pdf"){
-                $filename = DATA_FOLDER . DIRECTORY_SEPARATOR . md5("content" . mktime()) . '.pdf';
+                $filename = DATA_FOLDER . DIRECTORY_SEPARATOR . md5("content" . time()) . '.pdf';
                 
                 if(move_uploaded_file($content['tmp_name'], $filename)){
                     $this->content = $filename;
