@@ -90,7 +90,7 @@ class BookPaypalPayment {
                 ->setRedirectUrls($redirectUrls)
                 ->setTransactions(array($transaction));
         
-        Logger::log("New PP transaction " . $this->payment->toJSON());
+        Logger::log("New PP transaction", $this->payment->toJSON());
         
     }
     
@@ -129,7 +129,7 @@ class BookPaypalPayment {
                 var_dump($ex->getData());	
                 exit(1);
         }
-        Logger::log("PP transaction efter execution: " . $this->payment->toJSON());
+        Logger::log("PP transaction efter execution", $this->payment->toJSON());
     }
     
     
@@ -197,16 +197,16 @@ class BookPaypalPayment {
             $execution->setPayerId($payerId);
             
             try{
-                Logger::log("PP payment before execution: " . $payment->toJSON());
+                Logger::log("PP payment before execution", $payment->toJSON());
                 $payment->execute($execution, $apiContext);
                 
-                Logger::log("PP payment after execution: " . $payment->toJSON());
+                Logger::log("PP payment after execution", $payment->toJSON());
                 
                 if($payment->getState() == "approved" || $payment->getState() == "created"){
                     $purchase->setAsPaid($payerId);
                     return true;
                 }else{
-                    Logger::log("PP transaction error: " . json_encode($_GET));
+                    Logger::log("PP transaction error", json_encode($_GET));
                     throw new Exception("Transaction didint go through");
                 }
                 

@@ -24,18 +24,16 @@ if(!Auth::isFullyAuthenticated()){
 $book = filter_input(INPUT_POST, 'book_id');
 $user = filter_input(INPUT_POST, 'user');
 $review = filter_input(INPUT_POST, 'review');
-$ratting = filter_input(INPUT_POST, 'ratting');
+$rating = filter_input(INPUT_POST, 'rating');
 $id = filter_input(INPUT_GET, 'review_id');
 
 
-
-
-if($book && $user && $review && $ratting){
+if($book && $user && $review && $rating && $id){
    
     $review = BookReview::createReview($book, $user, $review, $rating);
     $review->setId($id);
     
-    if($review->canEdit(Auth::getLogedUserId())){
+    if($review->canEdit($user)){
     
         try{
             $review->update();    

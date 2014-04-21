@@ -176,19 +176,36 @@ class Book {
 
     
     public function canUserDownload($user){
-        $query = "SELECT b.id from book b left join purchase p on p.book_id = b.id where p.user = :user and p.status = :status";
+        $query = "SELECT p.id from purchase p where p.book_id = :book and p.user = :user and p.status = :status and downloads < 100";
         
         $paid = Purchase::STATUS_PAID;
         
         $stmt = Database::getConnection()->prepare($query);
-        $stmt->bindParam(":status", $paid, PDO::PARAM_INT);
+        $stmt->bindParam(":status", $paid, PDO::PARAM_STR);
         $stmt->bindParam(":user", $user, PDO::PARAM_INT);
+        $stmt->bindParam(":book", $this->id, PDO::PARAM_INT);
         $stmt->execute();
         
+        $canDownload = false;
         
-        return $stmt->rowCount() > 0 ? true : false;
+        if($purchase = $stmt->fetch()){
+            $query = "update purchase set downloads = downloads + 1 where id = :id";
+            $stmt = Database::getConnection()->prepare($query);
+            $stmt->bindParam(":id", $purchase['id'], PDO::PARAM_INT);
+            $stmt->execute();
+            
+            $canDownload = true;
+        }
+            
+        return $canDownload;
     }
-
+    
+    private function increaseCounterOnDownloads($user){
+        $paid = Purchase::STATUS_PAID;
+        
+        $query = "select p.id purchase p where p.user = :user and p.status = :status and downloads < 100 order by id asc limit 1";
+    }
+    
     /**
      * 
      * @param type $title

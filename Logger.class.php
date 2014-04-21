@@ -12,19 +12,16 @@ use BookShop\Database;
  */
 class Logger {
     
-    private $id;
     
-    private $message;
-    
-    private $created;
         
     
-    public static function log($message){
-        $query = "INSERT INTO log SET message = :message";
+    public static function log($message, $hash = null){
+        $query = "INSERT INTO log SET message = :message, hash = :hash";
         
         try{
             $stmt = Database::getConnection()->prepare($query);
             $stmt->bindParam(":message", $message);
+            $stmt->bindParam(":hash", $hash);
             
             return $stmt->execute();
         }catch(Exception $e){
@@ -32,5 +29,23 @@ class Logger {
         }
     }
     
+    
+    public static function search($start, $length){
+        $query = "SELECT id as number, cretated as timestamp, message as cleartest_message, hash, 'signature' as signature FROM log";
+        $params = array();
+        
+       if($start && $length){
+            $query .= " LIMIT " . $start . ", ".$length;
+        }   
+        
+        $stmt = Database::getConnection()->prepare($query);
+        foreach ($params as $key=>$param){
+            $stmt->bindParam(":".$key, $param);
+        }
+        
+        $stmt->execute();
+            
+        return $stmt->fetchAll();
+    }
     
 }

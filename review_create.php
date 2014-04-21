@@ -25,12 +25,12 @@ $user = filter_input(INPUT_POST, 'user');//Auth::getLogedUserId();
 $review = filter_input(INPUT_POST, 'review');
 $rating = filter_input(INPUT_POST, 'rating');
 
-
 if($book && $user && $review && $rating){
    
    try{
-        BookReview::createReview($book, $user, $review, $rating);
-     
+        $r = BookReview::createReview($book, $user, $review, $rating);
+        $r->update();
+        
         $response["success"] = true;
         $response["message"] = "Review has been created";
             

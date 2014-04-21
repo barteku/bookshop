@@ -29,6 +29,15 @@
         <form action="review_create.php" method="post">
             <input type="text" name="book_id" placeholder="book"/><br/>
             <input type="number" name="rating" placeholder="rating" /><br/>
+            <input type="user" name="user" placeholder="user" /><br/>
+            <textarea name="review" cols="50" rows="3" placeholder="review"></textarea><br/>
+            <input type="submit" value="submit" />
+        </form>
+        <h2>Review</h2>
+        <form action="review_update.php?review_id=6" method="post">
+            <input type="text" name="book_id" placeholder="book"/><br/>
+            <input type="number" name="rating" placeholder="rating" /><br/>
+            <input type="user" name="user" placeholder="user" /><br/>
             <textarea name="review" cols="50" rows="3" placeholder="review"></textarea><br/>
             <input type="submit" value="submit" />
         </form>

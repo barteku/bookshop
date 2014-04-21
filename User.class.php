@@ -60,7 +60,11 @@ class User {
         $this->type = $type;
     }
     
-    
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+
+        
     /**
      * 
      * @return type

@@ -7,7 +7,7 @@ use BookShop\Auth;
 
 
 
-if(!Auth::isFullyAuthenticated() && Auth::isAdmin()){
+if(!Auth::isFullyAuthenticated() && !Auth::isAdmin()){
     $response['message'] = "Only Admin can add books";
     header('Cache-Control: no-cache, must-revalidate');
     header('Content-Type: application/json');

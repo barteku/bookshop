@@ -12,7 +12,8 @@ $response = array(
 
 try{
     Auth::logout();
-
+    $response["success"] = true;
+    
 }catch(Exception $e){
     $response["message"] = $e->getMessage();
 }

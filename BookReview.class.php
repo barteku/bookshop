@@ -152,11 +152,7 @@ class BookReview {
         $r->setReview($review);
         $r->setRating($rating);
         
-        if($r->update()){
-            return $r;
-        }else{
-            throw new \Exception("Review can not be created", 500);
-        }
+        return $r;
     }
     
     
