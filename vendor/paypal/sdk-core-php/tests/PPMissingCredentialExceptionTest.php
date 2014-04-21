@@ -1,11 +1,11 @@
 <?php
-
+use PayPal\Exception\PPMissingCredentialException;
 
 /**
  * Test class for PPMissingCredentialException.
  *
  */
-class PPMissingCredentialExceptionTest extends PHPUnit_Framework_TestCase
+class PPMissingCredentialExceptionTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var PPMissingCredentialException

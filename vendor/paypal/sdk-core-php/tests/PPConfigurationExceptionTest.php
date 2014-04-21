@@ -1,10 +1,10 @@
 <?php
-
+use PayPal\Exception\PPConfigurationException;
 /**
  * Test class for PPConfigurationException.
  *
  */
-class PPConfigurationExceptionTest extends PHPUnit_Framework_TestCase
+class PPConfigurationExceptionTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var PPConfigurationException
@@ -29,7 +29,7 @@ class PPConfigurationExceptionTest extends PHPUnit_Framework_TestCase
     }
     public function testPPConfigurationException()
     {
-    	$this->setExpectedException('PPConfigurationException');
+    	$this->setExpectedException('PayPal\Exception\PPConfigurationException');
     	throw new PPConfigurationException('Test PPConfigurationException');
 
     }

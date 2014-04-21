@@ -10,16 +10,15 @@ $authors = filter_input(INPUT_GET, 'authors');
 $start = filter_input(INPUT_GET, 'start');
 $length = filter_input(INPUT_GET, 'length');
 
-$response = array(
-    "success" => false
-);
-
 try{
     $books = Book::search($title, $authors, $start, $length);
     $response = $books;
     
 } catch (Exception $e) {
-    $response["message"] = $e->getMessage();
+    $response = array(
+        "success" => false,
+        "message" => $e->getMessage()
+    );
 }
 
 header('Cache-Control: no-cache, must-revalidate');

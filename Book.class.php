@@ -3,12 +3,13 @@
 namespace BookShop;
 
 
+use BookShop\Database;
 use \PDO;
 
 /**
  * Description of Book
  *
- * @author bartek
+ * @author bart
  */
 class Book {
     
@@ -173,6 +174,20 @@ class Book {
         
     }
 
+    
+    public function canUserDownload($user){
+        $query = "SELECT b.id from book b left join purchase p on p.book_id = b.id where p.user = :user and p.status = :status";
+        
+        $paid = Purchase::STATUS_PAID;
+        
+        $stmt = Database::getConnection()->prepare($query);
+        $stmt->bindParam(":status", $paid, PDO::PARAM_INT);
+        $stmt->bindParam(":user", $user, PDO::PARAM_INT);
+        $stmt->execute();
+        
+        
+        return $stmt->rowCount() > 0 ? true : false;
+    }
 
     /**
      * 

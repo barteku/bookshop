@@ -1,10 +1,15 @@
 <?php
 
-include_once 'bootstrap.php';
+include_once __DIR__ . '/bootstrap.php';
 
 use BookShop\Purchase;
 use BookShop\Auth;
 
+
+$response = array(
+    "success" => false,
+    "message" => ""
+);
 
 
 if(!Auth::isFullyAuthenticated()){
@@ -19,21 +24,14 @@ if(!Auth::isFullyAuthenticated()){
 $bookId = filter_input(INPUT_GET, 'book_id');
 $user = filter_input(INPUT_GET, 'user');
 
-$response = array(
-    "success" => false,
-    "message" => ""
-);
-
 
 
 if($bookId && $user){
     
     try{
-        Purchase::createPurchase($bookId, $user);
-                
-        $response["success"] = true;
-        $response["message"] = "Book has been created";
+        $redirectUrl = Purchase::createPurchase($bookId, $user);
         
+        header("Location: $redirectUrl");
     }catch(Exception $e){
         $response["message"] = $e->getMessage();
     }

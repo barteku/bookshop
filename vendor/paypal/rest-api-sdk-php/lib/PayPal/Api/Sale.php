@@ -1,169 +1,235 @@
-<?php 
-
+<?php
 namespace PayPal\Api;
+
+use PayPal\Common\PPModel;
 use PayPal\Rest\IResource;
 use PayPal\Rest\Call;
 use PayPal\Rest\ApiContext;
+use PayPal\Api\Sale;
+use PayPal\Api\Refund;
+use PayPal\Transport\PPRestCall;
 
-/**
- * 
- */
-class Sale extends Resource implements IResource {
+class Sale extends PPModel implements IResource {
 
 	private static $credential;
-	
+
+	/**
+	 *
+	 * @deprecated. Pass ApiContext to create/get methods instead
+	 */
 	public static function setCredential($credential) {
 		self::$credential = $credential;
 	}
-	
+
 	/**
-	 * Setter for id
+	 * Identifier of the authorization transaction.
 	 * @param string $id
-	 */ 
+	 */
 	public function setId($id) {
 		$this->id = $id;
+		return $this;
 	}
 
 	/**
-	 * Getter for id
-	 */ 
+	 * Identifier of the authorization transaction.
+	 * @return string
+	 */
 	public function getId() {
 		return $this->id;
 	}
 
+
 	/**
-	 * Setter for create_time
+	 * Time the resource was created.
 	 * @param string $create_time
-	 */ 
-	public function setCreate_time($create_time) {
+	 */
+	public function setCreateTime($create_time) {
 		$this->create_time = $create_time;
+		return $this;
 	}
 
 	/**
-	 * Getter for create_time
-	 */ 
+	 * Time the resource was created.
+	 * @return string
+	 */
+	public function getCreateTime() {
+		return $this->create_time;
+	}
+
+	/**
+	 * Time the resource was created.
+	 * @param string $create_time
+	 * @deprecated. Instead use setCreateTime
+	 */
+	public function setCreate_time($create_time) {
+		$this->create_time = $create_time;
+		return $this;
+	}
+	/**
+	 * Time the resource was created.
+	 * @return string
+	 * @deprecated. Instead use getCreateTime
+	 */
 	public function getCreate_time() {
 		return $this->create_time;
 	}
 
 	/**
-	 * Setter for update_time
+	 * Time the resource was last updated.
 	 * @param string $update_time
-	 */ 
-	public function setUpdate_time($update_time) {
+	 */
+	public function setUpdateTime($update_time) {
 		$this->update_time = $update_time;
+		return $this;
 	}
 
 	/**
-	 * Getter for update_time
-	 */ 
+	 * Time the resource was last updated.
+	 * @return string
+	 */
+	public function getUpdateTime() {
+		return $this->update_time;
+	}
+
+	/**
+	 * Time the resource was last updated.
+	 * @param string $update_time
+	 * @deprecated. Instead use setUpdateTime
+	 */
+	public function setUpdate_time($update_time) {
+		$this->update_time = $update_time;
+		return $this;
+	}
+	/**
+	 * Time the resource was last updated.
+	 * @return string
+	 * @deprecated. Instead use getUpdateTime
+	 */
 	public function getUpdate_time() {
 		return $this->update_time;
 	}
 
 	/**
-	 * Setter for state
-	 * @param string $state
-	 */ 
-	public function setState($state) {
-		$this->state = $state;
-	}
-
-	/**
-	 * Getter for state
-	 */ 
-	public function getState() {
-		return $this->state;
-	}
-
-	/**
-	 * Setter for amount
+	 * Amount being collected.
 	 * @param PayPal\Api\Amount $amount
-	 */ 
+	 */
 	public function setAmount($amount) {
 		$this->amount = $amount;
+		return $this;
 	}
 
 	/**
-	 * Getter for amount
-	 */ 
+	 * Amount being collected.
+	 * @return PayPal\Api\Amount
+	 */
 	public function getAmount() {
 		return $this->amount;
 	}
 
+
 	/**
-	 * Setter for parent_payment
-	 * @param string $parent_payment
-	 */ 
-	public function setParent_payment($parent_payment) {
-		$this->parent_payment = $parent_payment;
+	 * State of the sale transaction.
+	 * @param string $state
+	 */
+	public function setState($state) {
+		$this->state = $state;
+		return $this;
 	}
 
 	/**
-	 * Getter for parent_payment
-	 */ 
+	 * State of the sale transaction.
+	 * @return string
+	 */
+	public function getState() {
+		return $this->state;
+	}
+
+
+	/**
+	 * ID of the Payment resource that this transaction is based on.
+	 * @param string $parent_payment
+	 */
+	public function setParentPayment($parent_payment) {
+		$this->parent_payment = $parent_payment;
+		return $this;
+	}
+
+	/**
+	 * ID of the Payment resource that this transaction is based on.
+	 * @return string
+	 */
+	public function getParentPayment() {
+		return $this->parent_payment;
+	}
+
+	/**
+	 * ID of the Payment resource that this transaction is based on.
+	 * @param string $parent_payment
+	 * @deprecated. Instead use setParentPayment
+	 */
+	public function setParent_payment($parent_payment) {
+		$this->parent_payment = $parent_payment;
+		return $this;
+	}
+	/**
+	 * ID of the Payment resource that this transaction is based on.
+	 * @return string
+	 * @deprecated. Instead use getParentPayment
+	 */
 	public function getParent_payment() {
 		return $this->parent_payment;
 	}
 
 	/**
-	 * Setter for links
-	 * @param PayPal\Api\Link $links
-	 */ 
+	 * 
+	 * @array
+	 * @param PayPal\Api\Links $links
+	 */
 	public function setLinks($links) {
 		$this->links = $links;
+		return $this;
 	}
 
 	/**
-	 * Getter for links
-	 */ 
+	 * 
+	 * @return PayPal\Api\Links
+	 */
 	public function getLinks() {
 		return $this->links;
 	}
 
-	
-	
-	/**
-	 * @path /v1/payments/sale/:sale-id
-	 * @method GET
-	 * @param string $saleid	  	 
-	 */
-	public static function get( $saleid) {
-		if (($saleid == null) || (strlen($saleid) <= 0)) {
-			throw new \InvalidArgumentException("saleid cannot be null or empty");
+
+
+	public static function get($saleId, $apiContext = null) {
+		if (($saleId == null) || (strlen($saleId) <= 0)) {
+			throw new \InvalidArgumentException("saleId cannot be null or empty");
 		}
 		$payLoad = "";
-		
-		$apiContext = new ApiContext(self::$credential);		$call = new Call();		
-		$json = $call->execute("/v1/payments/sale/$saleid", "GET", $payLoad, $apiContext);
+		if ($apiContext == null) {
+			$apiContext = new ApiContext(self::$credential);
+		}
+		$call = new PPRestCall($apiContext);
+		$json = $call->execute(array('PayPal\Rest\RestHandler'), "/v1/payments/sale/$saleId", "GET", $payLoad);
 		$ret = new Sale();
 		$ret->fromJson($json);
 		return $ret;
- 		 		
- 	}
-	
-	/**
-	 * @path /v1/payments/sale/:sale-id/refund
-	 * @method POST
-	 * @param Refund $refund	  
-	 * @param PayPal\Rest\ApiContext $apiContext optional	  	 
-	 */
-	public function refund( $refund, $apiContext=null) {
-		if ($refund == null) {
-			throw new \InvalidArgumentException("refund cannot be null");
-		}
+	}
+
+	public function refund($refund, $apiContext = null) {
 		if ($this->getId() == null) {
 			throw new \InvalidArgumentException("Id cannot be null");
 		}
-		$payLoad = $refund->toJSON();	
-		if($apiContext == null) {
+		if (($refund == null)) {
+			throw new \InvalidArgumentException("refund cannot be null or empty");
+		}
+		$payLoad = $refund->toJSON();
+		if ($apiContext == null) {
 			$apiContext = new ApiContext(self::$credential);
 		}
-		$call = new Call();		
-		$json = $call->execute("/v1/payments/sale/{$this->getId()}/refund", "POST", $payLoad, $apiContext);
-		$this->fromJson($json);
- 		return $this; 		
- 	}
-	
-
+		$call = new PPRestCall($apiContext);
+		$json = $call->execute(array('PayPal\Rest\RestHandler'), "/v1/payments/sale/{$this->getId()}/refund", "POST", $payLoad);
+		$ret = new Refund();
+		$ret->fromJson($json);
+		return $ret;
+	}
 }

@@ -4,6 +4,7 @@ namespace BookShop;
 
 
 use \PDO;
+use BookShop\Database;
 
 /**
  * Description of BookReview

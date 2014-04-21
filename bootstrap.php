@@ -12,6 +12,7 @@ require_once 'Book.class.php';
 require_once 'BookReview.class.php';
 require_once 'User.class.php';
 require_once 'Purchase.class.php';
+require_once 'BookPaypalPayment.class.php';
 
 
 

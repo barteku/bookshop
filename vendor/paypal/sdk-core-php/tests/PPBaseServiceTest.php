@@ -1,10 +1,10 @@
 <?php
-
+use PayPal\Core\PPBaseService;
 /**
  * Test class for PPBaseService.
  *
  */
-class PPBaseServiceTest extends PHPUnit_Framework_TestCase
+class PPBaseServiceTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var PPBaseService
@@ -17,9 +17,7 @@ class PPBaseServiceTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->object = new PPBaseService('serviceName', 'serviceBinding');
-        $this->object->setAccessToken('sampletoken');
-        $this->object->setTokenSecret('sampleSrcret');
+        $this->object = new PPBaseService('serviceName', 'serviceBinding', null);
     }
 
     /**
@@ -36,8 +34,6 @@ class PPBaseServiceTest extends PHPUnit_Framework_TestCase
     public function testGetServiceName()
     {
         $this->assertEquals('serviceName',$this->object->getServiceName() );
-        $this->assertEquals('sampletoken',$this->object->getAccessToken() );
-        $this->assertEquals('sampleSrcret',$this->object->getTokenSecret() );
     }
 
 

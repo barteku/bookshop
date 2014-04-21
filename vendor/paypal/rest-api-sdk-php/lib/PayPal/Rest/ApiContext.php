@@ -1,12 +1,13 @@
 <?php
 namespace PayPal\Rest;
 
+use PayPal\Common\PPApiContext;
 /**
  * 
  * Call level parameters such as
  * request id, credentials etc
  */
-class ApiContext {
+class ApiContext extends PPApiContext {
 	
 	/**
 	 * OAuth Credentials to use for this call
@@ -22,7 +23,6 @@ class ApiContext {
 	 */
 	private $requestId;
 	
-	
 	/**
 	 * 
 	 */
@@ -32,10 +32,11 @@ class ApiContext {
 	
 	public function getrequestId() {
 		if($this->requestId == null) {
-			$this->requestId = $this->generaterequestId();
+			$this->requestId = $this->generateRequestId();
 		}
 		return $this->requestId;
 	}
+	
 	
 	/**
 	 * 
