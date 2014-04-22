@@ -31,7 +31,7 @@ class Logger {
     
     
     public static function search($start, $length){
-        $query = "SELECT id as number, cretated as timestamp, message as cleartest_message, hash, 'signature' as signature FROM log";
+        $query = "SELECT id as number, created as timestamp, message as cleartest_message, hash, 'signature' as signature FROM log";
         $params = array();
         
        if($start && $length){

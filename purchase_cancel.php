@@ -21,6 +21,6 @@ if(!Auth::isFullyAuthenticated()){
 
 
 $token = filter_input(INPUT_GET, 'token');
-if(token){
+if($token){
     Purchase::cancelPurchase($token);
 }

@@ -34,10 +34,11 @@ $response = array(
 if($title && $authors && $description && $price){
     
     try{
-        Book::createBook($title, $authors, $description, $price, $image, $content);
+        $book = Book::createBook($title, $authors, $description, $price, $image, $content);
                 
         $response["success"] = true;
         $response["message"] = "Book has been created";
+        $response['book_id'] = $book;
         
     }catch(Exception $e){
         $response["message"] = $e->getMessage();

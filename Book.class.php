@@ -99,7 +99,8 @@ class Book {
         $query = "INSERT INTO book SET title = :title, authors = :authors, description = :description, price = :price, image = :image, content = :content";
         
         try{
-            $stmt = Database::getConnection()->prepare($query);
+            $db = Database::getConnection();
+            $stmt = $db->prepare($query);
             $stmt->bindParam(":title", $this->title, PDO::PARAM_STR);
             $stmt->bindParam(":authors", $this->authors, PDO::PARAM_STR);
             $stmt->bindParam(":description", $this->description, PDO::PARAM_STR);
@@ -107,7 +108,11 @@ class Book {
             $stmt->bindParam(":image", $this->image, PDO::PARAM_STR);
             $stmt->bindParam(":content", $this->content, PDO::PARAM_STR);
             
-            return $stmt->execute();
+            $stmt->execute();
+            
+            return $db->lastInsertId('id');
+            
+            //return $stmt->fetchObject("BookShop\Book");
         }catch(Exception $e){
             echo $e->getMessage();
         }
@@ -122,7 +127,7 @@ class Book {
         
         if($image['error'] === UPLOAD_ERR_OK){
             if($image["type"] == "image/jpeg"){
-                $filename = DATA_FOLDER . DIRECTORY_SEPARATOR . md5("image" . mktime()) . '.jpeg';
+                $filename = DATA_FOLDER . DIRECTORY_SEPARATOR . md5("image" . time()) . '.jpeg';
                 
                 if(move_uploaded_file($image['tmp_name'], $filename)){
                     $this->image = $filename;
@@ -226,9 +231,13 @@ class Book {
         
         $book->saveFiles($image, $content);
         
-        if(!$book->save()){
-            throw new Exception("Book was not created", 500);
+        $bookId = $book->save();
+        
+        if(!$bookId){
+            throw new \Exception("Book was not created", 500);
         }
+        
+        return $bookId;
         
     }
     

@@ -2,7 +2,7 @@
 
 include_once 'bootstrap.php';
 
-use BookShop\Log;
+use BookShop\Logger;
 use BookShop\Auth;
 
 
@@ -25,11 +25,7 @@ $length = filter_input(INPUT_GET, 'length');
 
 
 try{
-    if(!$user && !Auth::isAdmin()){
-        $user = Auth::getLogedUserId();
-    }
-    
-    $log = Log::search($start, $length);
+    $log = Logger::search($start, $length);
     $response = $log;
     
 } catch (Exception $e) {
