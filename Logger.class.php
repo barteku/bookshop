@@ -8,7 +8,7 @@ use BookShop\Database;
 /**
  * Description of Logger
  *
- * @author bartek
+ * @author Devante Campbell
  */
 class Logger {
     

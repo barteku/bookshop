@@ -8,7 +8,7 @@ use BookShop\User;
 /**
  * Description of Auth
  *
- * @author bartek
+ * @author Devante Campbell
  */
 class Auth {
     

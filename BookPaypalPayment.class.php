@@ -20,7 +20,7 @@ use BookShop\Logger;
 /**
  * Description of BookPaypal
  *
- * @author bartek
+ * @author Devante Campbell
  */
 class BookPaypalPayment {
     

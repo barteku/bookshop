@@ -7,7 +7,7 @@ use \PDO;
 /**
  * Description of User
  *
- * @author bartek
+ * @author Devante Campbell
  */
 class User {
 

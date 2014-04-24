@@ -12,7 +12,7 @@ use \PDO;
 /**
  * Description of Purchase
  *
- * @author bartek
+ * @author Devante Campbell
  */
 class Purchase {
     
@@ -211,16 +211,16 @@ class Purchase {
         $params = array();
         
         if($book){
-            $query .= " WHERE book_id like :book";
+            $query .= " WHERE book_id = :book";
             $params['book'] = $book;
             
             if($user){
-                $query .= " AND user like :user";
+                $query .= " AND user = :user";
                 $params['user'] = $user;
             }
             
         }elseif($user){
-            $query .= " WHERE user like :user";
+            $query .= " WHERE user = :user";
                 $params['user'] = $user;
         }
         

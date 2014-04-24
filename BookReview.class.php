@@ -9,7 +9,7 @@ use BookShop\Database;
 /**
  * Description of BookReview
  *
- * @author bartek
+ * @author Devante Campbell
  */
 class BookReview {
     
